@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 
 from database import SessionLocal, Base
 
-from typing import Type
+from typing import Self
 
 
 class BaseModel(Base):
@@ -21,23 +21,23 @@ class BaseModel(Base):
         return cls.__mapper__.primary_key[0]
 
     @classmethod
-    def all(cls, session_maker=SessionLocal) -> list[Type[BaseModel]]:
+    def all(cls, session_maker=SessionLocal) -> list[Self]:
         with session_maker() as session:
             return session.query(cls).all()
 
     @classmethod
-    def get_by_id(cls, _id: int, session_maker=SessionLocal) -> Type[BaseModel] | None:
+    def get_by_id(cls, _id: int, session_maker=SessionLocal) -> Self | None:
         with session_maker() as session:
             primary_key = cls._get_primary_key()
             return session.query(cls).filter(primary_key == _id).one()
 
     @classmethod
-    def first(cls, session_maker=SessionLocal) -> Type[BaseModel] | None:
+    def first(cls, session_maker=SessionLocal) -> Self | None:
         with session_maker() as session:
             return session.query(cls).first()
 
     @classmethod
-    def create(cls, session_maker=SessionLocal, **kwargs) -> Type[BaseModel]:
+    def create(cls, session_maker=SessionLocal, **kwargs) -> Self:
         instance = cls(**kwargs)
 
         with session_maker() as session:
