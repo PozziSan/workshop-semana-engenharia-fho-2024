@@ -7,5 +7,4 @@ class ExerciseModel(BaseModel):
     __tablename__ = "exercises"
 
     name = Column(String, nullable=False)
-    series = Column(Integer, nullable=False)
-    repetitions = Column(Integer, nullable=False)
+    muscular_group = Column(String, nullable=True)

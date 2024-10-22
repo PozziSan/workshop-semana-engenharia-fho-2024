@@ -10,7 +10,12 @@ router = APIRouter(prefix="/exercise", tags=["Exercise"])
 
 @router.get("/", response_model=Exercise)
 def get_all() -> list[ExerciseModel]:
-    return ExerciseModel.all()
+    exercises = ExerciseModel.all()
+
+    if not exercises:
+        raise NotFoundException()
+    
+    return exercises
 
 
 @router.post("/", response_model=Exercise)

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from controllers import health, exercise, workout
@@ -13,8 +13,8 @@ app.include_router(exercise.router)
 
 
 @app.exception_handler(Exception)
-def generic_exception_handler():
+def generic_exception_handler(req: Request, exception: Exception):
     return JSONResponse(
-        status_code=418,
+        status_code=500,
         content={"message": "Internal Server Error"},
     )

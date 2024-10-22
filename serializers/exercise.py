@@ -3,8 +3,7 @@ from pydantic import BaseModel
 
 class ExerciseBase(BaseModel):
     name: str
-    series: str
-    repetitions: str
+    muscular_group: str | None
 
 
 class ExerciseCreate(ExerciseBase):
