@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
-from controllers import health, workout
+from controllers import health, exercise, workout
 from database import Base, engine
 
 Base.metadata.create_all(engine)
@@ -9,6 +9,8 @@ Base.metadata.create_all(engine)
 app = FastAPI()
 app.include_router(health.router)
 app.include_router(workout.router)
+app.include_router(exercise.router)
+
 
 @app.exception_handler(Exception)
 def generic_exception_handler():
