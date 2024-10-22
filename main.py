@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from controllers import health, exercise, workout
+from controllers import health, exercise, workout, workout_exercise
 from database import Base, engine
 
 Base.metadata.create_all(engine)
@@ -10,6 +10,7 @@ app = FastAPI()
 app.include_router(health.router)
 app.include_router(workout.router)
 app.include_router(exercise.router)
+app.include_router(workout_exercise.router)
 
 
 @app.exception_handler(Exception)
