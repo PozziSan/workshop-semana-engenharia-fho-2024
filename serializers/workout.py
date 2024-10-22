@@ -15,3 +15,7 @@ class Workout(WorkoutBase):
 
     class Config:
         orm_mode = True
+
+
+class Workouts(BaseModel):
+    workouts: list[Workout] = []

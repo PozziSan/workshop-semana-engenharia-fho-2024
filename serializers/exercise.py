@@ -15,3 +15,7 @@ class Exercise(ExerciseBase):
 
     class Config:
         orm_mode = True
+
+
+class Exercises(BaseModel):
+    exercises: list[Exercise] = []

@@ -2,16 +2,18 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from exceptions import NotFoundException
-from serializers.workout import Workout, WorkoutCreate
+from serializers.workout import Workout, WorkoutCreate, Workouts
 from models.workout import WorkoutModel
 
 
 router = APIRouter(prefix="/workout", tags=["Workout"])
 
 
-@router.get("/", response_model=Workout)
-def get_all() -> list[WorkoutModel]:
-    return WorkoutModel.all()
+@router.get("/", response_model=Workouts)
+def get_all():
+    workouts = WorkoutModel.all()
+
+    return {"workouts": workouts}
 
 
 @router.post("/", response_model=Workout)
