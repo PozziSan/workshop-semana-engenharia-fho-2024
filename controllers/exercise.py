@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from exceptions import NotFoundException
 from serializers.exercise import Exercise, ExerciseCreate
 from models.exercise import ExerciseModel
+from models.workout_exercises import WorkoutExerciseModel
 
 router = APIRouter(prefix="/exercise", tags=["Exercise"])
 
@@ -26,5 +27,7 @@ def delete(exercise_id: int):
 
     if not exercise:
         raise NotFoundException()
+
+    exercise.delete()
 
     return JSONResponse(status_code=200, content={"message": "Success"})
