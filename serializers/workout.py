@@ -3,7 +3,7 @@ from pydantic import BaseModel
 class WorkoutBase(BaseModel):
     name: str
     mesocycle: str
-    studant_name: str | None
+    student_name: str | None = None
 
 
 class WorkoutCreate(WorkoutBase):

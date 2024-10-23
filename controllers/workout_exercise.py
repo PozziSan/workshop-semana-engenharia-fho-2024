@@ -40,6 +40,4 @@ def delete(workout_exercise_id: int):
 def get_by_workout_id(workout_id: int):
     workout_exercises = WorkoutExerciseModel.get_all_by(workout_id=workout_id)
 
-    print(workout_exercises)
-
     return {"workout_exercises": workout_exercises}

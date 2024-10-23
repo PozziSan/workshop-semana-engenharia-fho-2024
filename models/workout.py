@@ -8,6 +8,6 @@ class WorkoutModel(BaseModel):
     
     name = Column(String, nullable=False)
     mesocycle = Column(String, nullable=False)
-    studant_name = Column(String, nullable=True)
+    student_name = Column(String, nullable=True)
 
     workout_exercises = relationship("WorkoutExerciseModel", back_populates="workout")
