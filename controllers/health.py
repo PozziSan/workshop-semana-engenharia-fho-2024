@@ -7,4 +7,4 @@ router = APIRouter()
 def health():
     is_healthy = is_database_up()
 
-    return {"is_health": is_healthy, "status": 200}
+    return {"is_healthy": is_healthy, "status": 200}

@@ -33,9 +33,8 @@ class BaseModel(Base):
 
     @classmethod
     def get_all_by(cls, session_maker=SessionLocal, **kwargs) -> Self | None:
-        """Get all registries based on filters provided by kwargs.
-        """
-        
+        """Get all registries based on filters provided by kwargs."""
+
         with session_maker() as session:
             return session.query(cls).filter_by(**kwargs).all()
 
