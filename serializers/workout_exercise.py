@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 
-from serializers.exercise import Exercises
+from serializers.exercise import Exercise
+from serializers.workout import Workout
+
 
 class WorkoutExerciseBase(BaseModel):
     workout_id: int
@@ -16,6 +18,9 @@ class WorkoutExerciseCreate(WorkoutExerciseBase):
 
 class WorkoutExercise(WorkoutExerciseBase):
     id: int
+
+    workout: Workout
+    exercise: Exercise
 
 
 class WorkoutExercises(BaseModel):

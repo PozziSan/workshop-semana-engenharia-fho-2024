@@ -10,4 +10,4 @@ class ExerciseModel(BaseModel):
     name = Column(String, nullable=False)
     muscular_group = Column(String, nullable=True)
 
-    workout_exercises = relationship("WorkoutExerciseModel", back_populates="exercises")
+    workout_exercises = relationship("WorkoutExerciseModel", back_populates="exercise")

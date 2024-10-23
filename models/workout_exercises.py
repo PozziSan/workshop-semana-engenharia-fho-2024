@@ -12,5 +12,5 @@ class WorkoutExerciseModel(BaseModel):
     repetitions = Column(Integer, nullable=False)
     instructions = Column(String, nullable=True)
 
-    workout = relationship("WorkoutModel", back_populates="workout_exercises", uselist=False)
-    exercises = relationship("ExerciseModel", back_populates="workout_exercises")
+    workout = relationship("WorkoutModel", back_populates="workout_exercises", uselist=False, lazy=False)
+    exercise = relationship("ExerciseModel", back_populates="workout_exercises", uselist=False, lazy=False)

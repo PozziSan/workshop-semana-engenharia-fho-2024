@@ -32,9 +32,12 @@ class BaseModel(Base):
             return session.query(cls).filter(primary_key == _id).one()
 
     @classmethod
-    def first(cls, session_maker=SessionLocal) -> Self | None:
+    def get_all_by(cls, session_maker=SessionLocal, **kwargs) -> Self | None:
+        """Get all registries based on filters provided by kwargs.
+        """
+        
         with session_maker() as session:
-            return session.query(cls).first()
+            return session.query(cls).filter_by(**kwargs).all()
 
     @classmethod
     def create(cls, session_maker=SessionLocal, **kwargs) -> Self:
