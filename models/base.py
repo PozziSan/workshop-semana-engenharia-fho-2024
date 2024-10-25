@@ -29,7 +29,7 @@ class BaseModel(Base):
     def get_by_id(cls, _id: int, session_maker=SessionLocal) -> Self | None:
         with session_maker() as session:
             primary_key = cls._get_primary_key()
-            return session.query(cls).filter(primary_key == _id).one()
+            return session.query(cls).filter(primary_key == _id).one_or_none()
 
     @classmethod
     def get_all_by(cls, session_maker=SessionLocal, **kwargs) -> Self | None:
